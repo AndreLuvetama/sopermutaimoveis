@@ -1,0 +1,677 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+}
+
+.site{
+	width:100%;
+	float:left;
+	min-height:100%;
+	position:relative;
+}
+.cor-padrao{
+  background: rgb(2,0,36);
+background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(11,43,52,1) 25%, rgba(0,212,255,1) 100%);
+}
+
+
+
+#caixa2 {
+	background: url(../img/permuta2.png),
+				linear-gradient(50deg,#444444,#7c26f8);
+	background-attachment: fixed;
+	font-family: Helvetica,Arial,sans-serif;
+	height: 100%;
+}
+#caixa1 {
+	padding: 0px 0px 0px 0px;
+		
+}
+.mapa{
+		background: url(../img/mapa_permuta.jpg);
+		height: 393px;
+}
+
+
+@media (max-width: 575.98px) {
+	.btn-custom {
+		margin: 10px 15px;
+	}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px; color: #FFFFFF) and (max-width: 767.98px; color: #FFFFFF;) {
+	.testo_branco {
+		font-size: 2em;
+		color: #FFFFFF;
+		text-align: center;
+		margin-top:100px;
+		font-weight: bold;
+	}
+	.btn-custom {
+		margin: 50px 30px;
+		
+	}
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.testo_branco {
+		font-size: 2em;
+		color: #FFFFFF;
+		text-align: center;
+		margin-top:120px;
+		 font-weight: bold;
+	}
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.testo_branco {
+		font-size: 2em;
+		color: #FFFFFF;
+		text-align: center;
+		margin-top:100px;
+		 font-weight: bold;
+	}
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+	.testo_branco {
+		font-size: 2em;
+		color: #FFFFFF;
+		text-align: center;
+		margin-top:100px;
+		 font-weight: bold;
+	}
+}
+
+.btn-custom {
+	color: white;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    text-transform: uppercase;
+    transition: background 0.4s, color 0.4s;
+    padding: 10px 20px;
+}
+
+.btn-roxo {
+	background: #212529;
+}
+
+.btn-roxo:hover {
+	background-color: white;
+	color: black;
+}
+
+.btn-branco {
+	border: 2px solid white;
+}
+
+.btn-branco:hover {
+	background-color: white;
+	color: black;
+}
+.bt_caixa2{
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 100px;
+}
+ .footertxt. {
+  padding: 50px 0x 20px 0x;
+  background-color: #212529;
+
+  
+}
+.footertxt h4 {     
+ color:#FFFFFF;
+ text-align: center;
+ font-size: 1.1em;
+ font-weight: 700;
+ 
+  
+}
+.footertxt span{     
+ color:#FFFFFF;
+font-size: 0.8em;
+  
+}
+
+.footer_id{
+	padding: 50px;
+	background-color: #fffff;
+}
+
+footer .navbar-nav a {
+	color:#FFFFFF;
+    font-size: 0.8em;
+	text-align: center;
+	}
+	
+	.link1 a {
+	color:#212529;
+    font-size: 1.0em;
+	text-align: center;
+	}
+	.link1 a:hover {
+	text-decoration: none; 
+	color:#5858FA;
+	}
+
+footer .link1 .navbar-nav a:hover {
+	text-decoration: none; 
+	color:#5858FA;
+	}
+	.testo{
+		margin-top: 15px;
+		margin-bottom: 20px;
+	}
+  .img-comofunciona{
+		background: url(../img/permuta.jpg);
+		height: 500px;
+  }
+  .linha{
+	border-bottom: solid 2px #212529;
+	
+  }
+  .testo_formatado{
+	font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+
+  }
+
+  .testo_{
+    color: #747373;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+  .busca_cep{
+	margin: 0px;
+	padding: 0px;
+	
+	
+  }
+  .label_text{
+	border-radius: 3px;
+	border: 1px solid #D8D8D8;
+	height: 35px;
+  }
+.txt:focus{
+    border: 5px solid #A9E2F3;
+ 
+}
+.cadastro_user{
+	background-color: #EBE5C7;
+  box-shadow: 2px 2px 2px 2px #aaaaaa;
+  margin: 35px 100px 50px;
+  
+}
+.cadastro_imovel{
+	background-color: #EBE5C7;
+  box-shadow: 2px 2px 2px 2px #aaaaaa;
+  margin: 35px 100px 50px;
+  
+}
+
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+
+}
+
+.imgHover:hover .image {
+  opacity: 0.3;
+}
+
+.imgHover:hover .middle {
+  opacity: 1;
+}
+
+.text2 {
+  background-color: #3589A1;
+  color: white;
+  font-size: 8px;
+  padding: 12px 10px;
+}
+
+.menuHover {
+  transition: 0.4s;
+  color: #FAF9F6;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 0 6px;
+  margin: 0 6px;
+ 
+}
+ .menuHover:hover {
+  background-color: #3589A1;
+  color: #FAF9F6;
+   padding: 10px 5px; 
+  text-decoration: none;
+}
+
+
+/* not active */
+.nav-pills .pill-1 .nav-link:not(.active) {
+    background-color: #EBE5C7;
+     color: black;
+}
+
+
+/* active (faded) */
+.nav-pills .pill-1 .nav-link {
+    background-color: #3589A1;
+    color: white;
+}
+a.none_line {
+    text-decoration: none;
+     color: black;
+     size: 12px;
+
+}
+
+a.none_line a:hover {
+    text-decoration: none;
+     color: black;
+     size: 12px;
+}
+a:hover {
+    text-decoration: none;
+
+}
+
+
+
+
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 25%;
+  height: 350px;
+
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+   
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #848484;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #3589A1;
+  color: white;
+}
+
+/* Style the tab content */
+.tabcontent { /* Parte das Abas Meu perfil*/
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 75%;
+  
+  height: 650px;
+}
+
+.menu_tab{
+	padding: 5px;
+	 
+	 color: white;
+	 height: 350px;
+	 color: black;
+	 box-shadow: 1px;
+	 font: italic bold 16px/30px Georgia, serif;
+	 
+	 
+}
+.divfotoPerfil{
+  padding-left: 40px;
+ 
+}
+
+.fotoPerfil{
+  border-radius: 50%;
+  
+}
+
+
+.Contato_bt{
+	
+}
+
+/* Configuração da tab da tela de cadastros os imoveis*/
+
+.cadastroImovel{
+	width: 1024px;
+	height: auto;
+	position: relative;
+	
+}
+.nav_tabs_horizontal{
+	width: 760px;
+	height: 530px;
+	position: relative;
+	
+}
+.nav_tabs_horizontal ul li{
+	float: left;
+}
+
+.nav_tabs_horizontal ul{
+	list-style: none;
+}
+.nav_tabs_horizontal label{
+	
+
+}
+.rd_tabs:checked ~ label{
+	background-color: #e54e43;
+}
+.rd_tabs{
+	display: none;
+}
+.content_horizontal{
+	border-top: 5px solid #e54e43;
+	
+	
+	display: none;
+	position: absolute;
+	height: 320px
+	width:800px;
+	left: 0;
+}
+.rd_tabs:checked ~ .content_horizontal{
+	display: block; /*quando checar altera o display*/
+}
+.content_horizontal article{
+	padding: 0px 10px;
+	
+	width:760px;
+	float:left;
+	min-height:300px;
+}
+.bt_label{
+	background-color: #363b48;
+	cursor: pointer;
+	width: 190px;
+
+	padding: 10px;
+	text-align: center;
+	color: #fff;
+	margin-bottom: -5px;
+}
+
+/**Configuração dos upload de imagens**/
+
+
+.inputFile{
+	display: none;
+}
+
+.lb_uploadFoto {
+  background-color: #3589A1;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 20px;
+  padding: 10px 30px
+  height: 150px;
+  width: 200px;
+}
+
+
+.uploadFoto {
+  background-color: #3498db;
+ 	
+  height: 150px;
+  width: 200px;
+}
+.dropzone {
+      background: #fff;
+      border: 2px dashed #ddd;
+      border-radius: 5px;
+    }
+
+    .dz-message {
+      color: #999;
+    }
+
+    .dz-message:hover {
+      color: #464646;
+    }
+
+    .dz-message h3 {
+      font-size: 200%;
+      margin-bottom: 15px;
+    }
+    .navhover:hover {
+      color: red;
+    }
+/**tabs**/
+.tabHover:hover {
+  background-color: #A4A4A4;
+  color: #FAF9F6;
+ 
+}
+
+.nav-pills .nav-link.active {
+    color: #FFFFFF;
+    cursor: default;
+    background-color: #3589A1; 
+    
+}
+
+hr.style8 {
+	border-top: 1px solid #8c8b8b;
+	border-bottom: 1px solid #fff;
+	background-color: black;
+}
+
+hr.style7 {
+	border-top: 1px solid #8c8b8b;
+	border-bottom: 1px solid #fff;
+	background-color: black;
+	width: 100%;
+}
+@include media-breakpoint-up(lg) {
+  .testo12{
+    font-size: 1.6rem;
+  }
+}
+.nav-b{
+	border: 5px;
+	border-style: solid;
+	border-color: blue;
+	
+}
+
+.txt-imovel{
+	font-size: 14px;
+	font-family (stack): Roboto;
+	Font being Rendered: Roboto 100.0% (remote);
+	margin: 12px 65px 8px 0px;
+	letter-spacing: 0.2px;
+	padding: 0px 15px 0px 0px;
+	font-weight: 400px;
+	font-style: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none solid rgb(43, 43, 45);
+	text-align: justify;
+	text-indent: 0px;
+
+}
+
+/** imagens **/
+
+ul, ol, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.reorder_link {
+    color: #3675B4;
+    border: solid 2px #3675B4;
+    border-radius: 3px;
+    text-transform: uppercase;
+    background: #fff;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 15px 15px 15px 0px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    -webkit-transition: all 0.35s;
+    -o-transition: all 0.35s;
+    white-space: nowrap;
+}
+.reorder_link:hover {
+    color: #fff;
+    border: solid 2px #3675B4;
+    background: #3675B4;
+    box-shadow: none;
+}
+#reorder-helper{
+    margin: 18px 10px;
+    padding: 10px;
+}
+.light_box {
+    background: #efefef;
+    padding: 20px;
+    margin: 15px 0;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/* image gallery */
+.gallery{
+    width:100%;
+    float:left;
+    margin-top:15px;
+}
+.gallery ul{
+    margin:0;
+    padding:0;
+    list-style-type:none;
+}
+.gallery ul li{
+    padding:7px;
+    border:2px solid #ccc;
+    float:left;
+    margin:10px 7px;
+    background:none;
+    width:auto;
+    height:auto;
+}
+.gallery img{
+    width:250px;
+}
+
+/* notice box */
+.notice, .notice a{
+    color: #fff !important;
+}
+.notice {
+    z-index: 8888;
+    padding: 10px;
+    margin-top: 20px;
+}
+.notice a {
+    font-weight: bold;
+}
+.notice_error {
+    background: #E46360;
+}
+.notice_success {
+    background: #657E3F;
+}
+.cursoralt {
+cursor: pointer;
+}
+
+
+
+.fontIcon1 {
+height: 100px;
+width: 100px;
+background-color:black;
+border-radius: 15px;
+font-size: 100px;
+}
+
+.fontIcon{
+    /*size */
+    height: 50px;
+    width: 50px;
+    /*color */
+    background: #1b1b1b none repeat scroll 0 0;
+    opacity: 0.5;
+    /*shape border*/
+    border-radius: 50%; /*zero for square */
+    /*symbol */
+    color: #fff;
+    line-height: 60px;
+    /*vertical position */
+    top: 50%;
+}
+.img-carrossel{
+  background-color: black;
+}
+#img-cadastrar-tab {
+  background: url(../img/permuta2.png),
+        linear-gradient(50deg,#444444,#7c26f8);
+  background-attachment: fixed;
+  font-family: Helvetica,Arial,sans-serif;
+  height: 100%;
+}
+.fundoPadrao{
+  background-color: #076377;
+}
+
+
+
