@@ -16,7 +16,7 @@ class Login extends CI_Controller {
 
 
 	
-	public function login()
+	public function Login()
 	{
 		
 
@@ -143,6 +143,8 @@ class Login extends CI_Controller {
 		$dados["tab_imoveis"] = $this->cadastrarimovel->getImovel()->row();
 		 $dados['carouselimg'] = $this->cadastrarimovel->carroselImg(); 
 		$dados['titulo'] = 'Editar Perfil'; 	
+		$dados["totalMsg"] = $this->mmeuperfil->totalMsg();
+		$dados["totalMsgEnviada"] = $this->mmeuperfil->totalMsgEnviada();
 
 		$this->load->view('v_meu_perfil', $dados);
    	} 
@@ -213,6 +215,7 @@ class Login extends CI_Controller {
         $dados["listarmensagem"] = $this->mmeuperfil->listarMensagem();
 		$dados["tab_usuario"] = $this->mmeuperfil->getCadastro()->row();
 		$dados["imoveisdeInteresse"] = $this->cadastrarimovel->getImoveisdeInteresse();
+		$dados["tab_imoveis"] = $this->cadastrarimovel->getImovel()->row();
 			 
 		if(($id = $this->uri->segment(2)) > 0): // pega o segundo seguimento da uri, que é post
 			if($imovel = $this->cadastrarimovel->get_singleImovel($id)):
@@ -341,6 +344,55 @@ class Login extends CI_Controller {
 		$this->load->view('v_atualizarimovel', $dados);
 
 	}
+
+	public function mensagem(){
+		$dados["listarmensagem"] = $this->mmeuperfil->listarMensagem();
+		$dados['titulo'] = 'Caixa de Mensagem'; 		
+		$this->load->view('v_mensagem', $dados);
+	}
+
+	public function mensagemretorno(){
+		$this->load->library("controle_acesso"); //controla se o user está logado 
+        $this->controle_acesso->controlar();
+		$dados["listarmensagem"] = $this->mmeuperfil->listarMensagem();
+
+
+
+		if(($id = $this->uri->segment(2)) > 0): // pega o segundo seguimento da uri, que é post
+			if($mensagemretorno = $this->mmeuperfil->get_singleMensagem($id)):
+				$dados['assunto'] = $mensagemretorno->assunto;
+				$dados['mensagem'] = $mensagemretorno->mensagem;
+				$dados['usuarioEnvioNome'] = $mensagemretorno->usuario_envio_nome;
+				$dados['usuarioRecebeNome'] = $mensagemretorno->usuario_recebe_nome;
+				$dados['usuarioRecebeId'] = $mensagemretorno->usuario_recebe_id;
+				$dados['usuarioEnvioId'] = $mensagemretorno->usuario_envio_id;
+				$dados['dataEnvio'] = $mensagemretorno->data_envio;
+				$dados['statusMensagem'] = $mensagemretorno->status_lido;
+		       $dados['titulo'] = 'Caixa de Mensagem'; 	
+		else:
+				$dados['titulo'] = 'Página não encontrada- Só Permuta';
+				$dados['not_titulo'] = 'Mensagem não encontrada';
+				$dados['not_conteudo']= 'Nenhuma noticia encontrada com base nas buscas';			
+			endif;
+		else:
+			redirect(base_url(), 'refresh');
+		endif;	
+		$this->load->view('v_mensagem_retorno', $dados);
+	}
+
+			public function enviarMensagem(){
+		if($this->mmeuperfil->enviarMensagem()){ 
+			 	echo "<div class='alert alert-info' role='alert'>
+  					Mensagem enviada com sucesso!
+					</div>";
+		}else{
+			echo "<div class='alert alert-info' role='alert'>
+  					Mensagem não enviada, tentar mais tarde
+					</div>";
+		}			
+				
+		}
+
 		
 	
 }

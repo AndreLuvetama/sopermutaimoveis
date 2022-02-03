@@ -6,8 +6,8 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'dsn'	=> '107.180.24.242',
+    'hostname' => 'localhost',
 	'username' => 'sopermuta_user',
 	'password' => 'permuta0611',
 	'database' => 'db_sopermuta',

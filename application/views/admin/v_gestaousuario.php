@@ -125,7 +125,7 @@
                                                     echo "<span class='text-info'>Admin</span>";
                                                 }
                                                 ?></td>
-                                                <td><?php if($usuario['statusAssinante'] == 1){
+                                                <td><?php if($usuario['statusAssinante'] == 0){
                                                     echo "N/Assinante";
                                                 }
                                                 else{

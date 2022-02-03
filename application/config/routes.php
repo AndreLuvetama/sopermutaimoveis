@@ -66,6 +66,8 @@ $route['admin/(:num)'] = 'admin/gestaousuario/$1';
 $route['admin'] = 'admin/gestaousuario';
 $route['imovel'] = 'login';
 $route['imovel/(:num)'] = 'login/imovel/$1';
+$route['mensagemretorno/(:num)'] = 'login/mensagemretorno/$1';
+$route['mensagem'] = 'login/mensagem';
 
 $route['post'] = 'pagina';
 $route['post/(:num)'] = 'pagina/post/$1';

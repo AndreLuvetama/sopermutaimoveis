@@ -222,20 +222,57 @@ public function atualizar()
 				$this->db->where("usuario_id", $usuario_id);
 				return $this->db->update("tab_usuario",$cadastro);	
 			}
- public function listarMensagem(){
+ 		public function listarMensagem(){
 
 		$usuario_id = $this->session->userdata("usuario_id");
 		
 	      $this->db->select("*");
 		 $this->db->from("tab_mensagem");
 		 $this->db->where("tab_mensagem.usuario_recebe_id", $usuario_id);
-		 $this->db->order_by("data_envio", "desc");
+		 $this->db->order_by("data_envio", "asc");
 			$query = $this->db->get(); 
             $result = $query->result_array();  
             
             return !empty($result)?$result:false; 
 
 		}
+
+
+		 public function get_singleMensagem($id=0){
+
+		$usuario_id = $this->session->userdata("usuario_id");
+		
+	      $this->db->select("*");
+		  $this->db->from("tab_mensagem");
+		  $this->db->where("tab_mensagem.mensagem_id", $id and "tab_mensagem.usuario_recebe_id", 70);
+		 // $this->db->where("tab_mensagem.usuario_recebe_id", $id);
+		     //return $this->db->get();
+		     $query = $this->db->get();
+
+			if($query->num_rows() == 1):
+				$row = $query->row();
+				return $row;
+			else:
+				return NULL;
+			endif;
+
+		}
+
+
+		public function enviarMensagem1(){
+			$mensagem = array(
+				'usuario_recebe_id'=> $this->input->post("txt_usuario_recebe_id"),
+				'usuario_recebe_nome'=> $this->input->post("txt_usuario_recebe_nome"),
+				'usuario_envio_nome'=> $this->input->post("txt_usuario_envio_nome"),
+				'usuario_envio_id'=> $this->session->userdata($usuario_id),
+				'assunto'=> $this->input->post("txt_assunto"),
+				'mensagem'=> $this->input->post("txt_mensagem")
+			);
+			$this->db->where("usuario_id", $usuario_id);
+			return $this->db->insert("tab_mensagem", $mensagem);
+
+		}
+
 
 		public function enviarMensagem(){
 			$mensagem = array(
@@ -250,14 +287,26 @@ public function atualizar()
 
 		}
 
+		//Total de mensagem enviada
+		public function totalMsgEnviada(){
+		 $usuario_id = $this->session->userdata("usuario_id");
+		 $this->db->select("*");
+		 $this->db->from("tab_mensagem");
+		 $this->db->where("tab_mensagem.usuario_envio_id", $usuario_id);
+		 	$query = $this->db->get(); 
+         return $query->num_rows();
+		}
+       //Total de mensagem recebida
 		public function totalMsg(){
-			$usuario_id = $this->session->userdata("usuario_id");
+		 $usuario_id = $this->session->userdata("usuario_id");
 		 $this->db->select("*");
 		 $this->db->from("tab_mensagem");
 		 $this->db->where("tab_mensagem.usuario_recebe_id", $usuario_id);
 		 	$query = $this->db->get(); 
          return $query->num_rows();
 		}
+
+			
 		public function envioEmail(){
 			$this->load->library('email*');
 		}

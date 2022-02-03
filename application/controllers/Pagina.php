@@ -9,7 +9,7 @@ class Pagina extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 	  $this->load->model("M_Noticias", "noticias");
-	   $this->load->library("phpmailer_lib");
+	   $this->load->library("PHPMailer_Lib");
 
 	}
 

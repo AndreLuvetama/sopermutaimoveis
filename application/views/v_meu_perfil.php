@@ -39,6 +39,7 @@
       $txt_imoveis_id         = isset($tab_imoveis->id) ? $tab_imoveis->id: "";
       $statusAssinante         = isset($tab_usuario->statusAssinante) ? $tab_usuario->statusAssinante: "";
 
+
 //Buscando os imóveis de interesse
                
 ?>
@@ -190,13 +191,13 @@
                 </div>
            <?php }?>
 
-          <div class="card">
+          <div class="card">          
               <div class="card-header">
                 <div class="row">
                   <div class="col-md-4">Olá <?php echo $this->session->userdata("nomeUsuario")?>|
                     <a href="<?php echo base_url()?>login/logoff" class = "none_line">
                     <i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;sair</a></div>
-                  <div class="col-md-4 offset-md-4"><label for="cod_pessoa">Usuário <?php echo $txt_cad_pessoa_id ?> </label></div>
+                  <div class="col-md-4 offset-md-4"><label for="cod_pessoa">Usuário <?php echo $txt_usuario_id ?> </label></div>
                 </div>
 
               </div>
@@ -252,10 +253,24 @@
                     </div>
                     <div class="col-sm-5"> 
                       <div class="alert alert-secondary" role="alert">
-                          Mensagem enviada <a href="#" class="alert-link">Visualizar</a> 2 mensagens enviada.
+                            <?php 
+                        if(empty($totalMsgEnviada)){
+                          echo "Nenhuma mensagem enviada";
+                        } else { ?>
+                           <a href="#" class="alert-link">Mensagem enviada
+                          <?php echo "$totalMsgEnviada"; ?> </a> 
+                        <?php } ?>
                       </div>
                       <div class="alert alert-warning" role="alert">
-                          Mensagem recebida <a href="#" class="alert-link">Ler mensagem</a>. 1 mensagem recebida.
+                        <?php 
+                        if(empty($totalMsg)){
+                          echo "Nenhuma mensagem recebida";
+                        } else { ?>
+                          <a href="<?php echo base_url('mensagem'); ?>" class="alert-link">Mensagem recebida
+                                                      <?php echo "$totalMsg"; ?> </a> 
+
+                        <?php } ?>
+                           
                       </div>
 
 
@@ -460,7 +475,7 @@
       </div>
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" >
         <div class="card">
-          <div class="card-header">Meus imóveis</div>
+          <div class="card-header">Meu imóvel, ID<b> <?php echo $txt_imoveis_id ?> </b></div>
           <div class="card-body border border-white"  style="background-color: #FEFEFF">
             <div class="form-row">
                <?php if(!empty($txt_imoveis_id) && !empty($txt_file_name))
@@ -474,6 +489,7 @@
                                <?php echo $txt_nomeImovel ?>
 
                         </h5>
+
                         <i class="fas fa-street-view 3x"></i>&nbsp;&nbsp;R.<?php echo $txt_ruaImovel."&nbsp;-&nbsp;".$txt_bairroImovel.",&nbsp;" .$txt_estadoImovel."&nbsp;".$txt_cepImovel ?>, Brasil</br>
                         <i class="fas fa-calendar-alt 3x"></i>&nbsp;&nbsp;<?php echo $txt_data_inc ?></br></br>
                         <a href="<?php echo base_url('CadastrarImovel/exluirImovel/'.$txt_imoveis_id); ?>"><button class="btn btn-danger" onclick="return confirm('Tem certeza que pretende esxcluir o imóvel?')">&nbsp;&nbsp;<i class="fa fa-trash"></i>&nbsp;&nbsp;delete</button></a>
@@ -502,30 +518,31 @@
         <div class="form-row">
         <div class="col-lg-12">
            <div class="table-responsive">
-            <table class="table table-striped" id="minhaTabela" cellspacing="0" width="100%">
-              <thead>
-                  <?php  if(!empty($imoveisdeInteresse) and !empty($txt_imoveis_id)  )
+            <table id="minhaTabela" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+        <tbody>
+           <?php  if(!empty($imoveisdeInteresse) and !empty($txt_imoveis_id)  )
                         {                            
                     foreach($imoveisdeInteresse as $imoveiss)
                       { 
-                         if($imoveiss['intTipoImovel'] == $txt_intTipoImovel
+                         if($imoveiss['tipoImovel'] == $txt_intTipoImovel
                           && $imoveiss['id'] != $txt_imoveis_id 
-                          && $imoveiss['intEstados'] == $txt_intEstados 
-                          && $imoveiss['intImvlMobilia'] == $txt_intImvlMobilia 
+                          && $imoveiss['estadoImovel'] == $txt_intEstados 
+                          && $imoveiss['imovelMobilia'] == $txt_intImvlMobilia 
                           &&  !empty($imoveiss['default_image'])){
                       
-                        $defaultImage = !empty($imoveiss['default_image'])?'<img src="'.base_url().'upload/imoveis/'.$imoveiss['default_image'].'" width= "250" alt="" />':''; ?> 
-                <tr><th></th> 
-                <th></th></tr>
-                
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td class="nav-item pt-3" width="20%">
+                        $defaultImage = !empty($imoveiss['default_image'])?'<img src="'.base_url().'upload/imoveis/'.$imoveiss['default_image'].'" width= "250" alt="" />':''; ?>
+            <tr>
+                <td class="nav-item pt-3" width="20%">
                        <?php echo $defaultImage; ?>     
-                  </td>
-                  <td class="nav-item p-3" width="80%" style="font-size: 14px; font-family (stack):Roboto">
+                </td>
+                
+               <td class="nav-item p-3" width="80%" style="font-size: 14px; font-family (stack):Roboto">
                       <p style="font-size: 1.3rem" class="link1">
                            <?php if($statusAssinante == 1) {?>
                     <a href="<?php echo base_url('imovel/'.$imoveiss['id']); ?>">
@@ -585,11 +602,11 @@
                   <tr><td colspan="7">Ainda não encontramos imovel semelhantes...</td></tr>
                   <?php }       
 
-                ?>
-               
-              </tbody>
-                
-            </table>
+                ?>             
+            
+        </tbody>
+        
+    </table>
         
             </div>
             </div>    
@@ -645,14 +662,7 @@
     <script src="js/bootstrap.min.js"></script>
 
 
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        
+       
   </body>
 </html>
 

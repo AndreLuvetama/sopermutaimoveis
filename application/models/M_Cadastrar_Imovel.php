@@ -224,21 +224,21 @@ public function insertImoveis($data = array()){
 		$options = "<option value= ''> selecione o estado</option>";
 		$estado = $this->getAll();
 		foreach($estado -> result() as $estados) {
-			$options .= "<option value = '{$estados->Id}'-'{$estados->Nome}'> {$estados->Nome}</option>";
+			$options .= "<option value = '{$estados->Uf}'-'{$estados->Nome}'> {$estados->Nome}</option>";
 		}
 		return $options;
 	}
 	 
 
-	public function getMunicipioByEstados($id_estado = null){
+	public function getMunicipioByEstados($uf_estado = ""){
 		return $this->db
-		         ->where('id_estado', $id_estado)
+		         ->where('Uf', $uf_estado)
 		         ->order_by('Nome')
 		         ->get('municipio');
 	}
 
-	public function selectMunicipio($id_estado = null){
-		$municipios = $this->getMunicipioByEstados($id_estado);
+	public function selectMunicipio($uf_estado = ""){
+		$municipios = $this->getMunicipioByEstados($uf_estado);
 		$total_municipios= $municipios->num_rows();
 		$options = "<option>selecione os municipios({$total_municipios})</option>";
 		foreach ($municipios ->result() as $municipio) {

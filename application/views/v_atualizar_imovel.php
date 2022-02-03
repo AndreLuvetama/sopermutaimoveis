@@ -371,85 +371,85 @@
               <label for="txt_intEstados">UF:</label>
                 <select class="form-control" name="txt_intEstados" id="estados">
                    <option value="<?php echo $txt_intEstados?>" <?php echo set_select('txt_intEstados', 'txt_intEstados'); ?> selected><?php switch($txt_intEstados){
-                    case 1:
+                    case "AC":
                     echo "Acre";
                     break;
-                    case 2:
+                    case "AL":
                     echo "Alogoas";
                     break;
-                    case 3:
+                    case "AP":
                     echo "Amapá";
                     break;
-                    case 4:
+                    case "AM":
                     echo "Amazonas";
                     break;
-                    case 5:
+                    case "BA":
                     echo "Bahia";
                     break;
-                    case 6:
+                    case "CE":
                     echo "Ceará";
                     break;
-                    case 7:
+                    case "DF":
                     echo "Destrito Federal";
                     break;
-                    case 8:
+                    case "ES":
                     echo "Espírito Santo";
                     break;
-                    case 9:
+                    case "GO":
                     echo "Góias";
                     break;
-                    case 10:
+                    case "MA":
                     echo "Maranhão";
                     break;
-                    case 11:
+                    case "MT":
                     echo "Mato Grosso";
                     break;
-                    case 12:
+                    case "MS":
                     echo "Mato Grosso do Sul";
                     break;
-                    case 13:
+                    case "MG":
                     echo "Minas Gerais";
                     break;
-                    case 14:
+                    case "PA":
                     echo "Pará";
                     break;
-                    case 15:
+                    case "PB":
                     echo "Paraíba";
                     break;
-                    case 16:
+                    case "PR":
                     echo "Paraná";
                     break;
-                    case 17:
+                    case "PE":
                     echo "Pernambuco";
                     break;
-                    case 18:
+                    case "PI":
                     echo "Piaui";
                     break;
-                    case 19:
+                    case "RJ":
                     echo "Rio de Janeiro";
                     break;
-                    case 20:
+                    case "RN":
                     echo "Rio Grande do Norte";
                     break;
-                    case 21:
+                    case "RS":
                     echo "Rio Grande do Sul";
                     break;
-                    case 22:
+                    case "RO":
                     echo "Rondônia";
                     break;
-                    case 23:
+                    case "RR":
                     echo "Roraima";
                     break;
-                    case 24:
+                    case "SC":
                     echo "Santa Catarina";
                     break;
-                    case 25:
+                    case "SP":
                     echo "São Paulo";
                     break;
-                      case 26:
+                      case "SE":
                     echo "Sergipe";
                     break;
-                    case 27:
+                    case "TO":
                     echo "Tocantins";
                     break;
                       }

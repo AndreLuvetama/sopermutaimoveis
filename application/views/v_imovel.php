@@ -2,7 +2,8 @@
         $statusAssinante = isset($tab_usuario->statusAssinante) ? $tab_usuario->statusAssinante: "";
         $txt_usuario_id = isset($tab_usuario->usuario_id) ? $tab_usuario->usuario_id: "";
         $txt_nome = isset($tab_cad_pessoa->nome) ? $tab_cad_pessoa->nome: "";
-        $txt_email = isset($tab_cad_pessoa->email) ? $tab_cad_pessoa->email: "";
+        $txt_email = isset($tab_cad_pessoa->email) ? $tab_cad_pessoa->email: "";    
+        $txt_imoveis_id         = isset($tab_imoveis->id) ? $tab_imoveis->id: ""; 
 ?>
 
 <?php $this->load->view('v_cabecalho'); ?>
@@ -54,10 +55,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
  <link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
+
 <!--<?php //echo var_dump($txt_usuario_id);?>
 <?php //echo var_dump($txt_imoveis_id);?>
 <?php //echo var_dump($txt_file_name);?>-->
-      
+     
     <title>Só Permuta</title>
 
     <?php $usuario = $this->session->userdata("usuario_id") ?>
@@ -316,7 +318,7 @@ Tipo de Imóvel:&nbsp;&nbsp;&nbsp;&nbsp;<span class="font-weight-bold"><?php ech
      <div class="form-row pt-3">        
        <div class="table-responsive">
           <table class="table">
-            <thead class="thead-light ">
+            <thead class="thead-light">
                         <tr>                           
                                   <th scope="col">Assunto</th>
                                   <th scope="col">Nome do usuário</th>
@@ -375,26 +377,33 @@ Tipo de Imóvel:&nbsp;&nbsp;&nbsp;&nbsp;<span class="font-weight-bold"><?php ech
         <h5>Imóveis do seu interesse &hearts;</h5><br>        
         <div class="form-row">
         <div class="col-sm-12 txt-imovel">
-
-        <div class="table-responsive">
-          <table class="table table-striped" id="minhaTabela">
-          	  <thead class="thead-dark">
-          	  	<tr> <td ></td><td ></td></tr>
-
-                <?php  if(!empty($imoveisdeInteresse))
+              <div class="table-responsive">
+                <table id="minhaTabela" class="display" style="width:100%">
+                <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Position</th>
+                      
+                  </tr>
+              </thead>
+        <tbody>
+           <?php  if(!empty($imoveisdeInteresse))
                         { 
                            
                     foreach($imoveisdeInteresse as $imoveiss)
                       { 
-                         if($imoveiss['intTipoImovel'] == $intTipoImovel && $imoveiss['id'] != $id && $imoveiss['intEstados'] == $intEstados && $imoveiss['intImvlMobilia'] == $intImvlMobilia  && 
+                         if($imoveiss['intTipoImovel'] == $intTipoImovel && $imoveiss['id'] != $txt_imoveis_id && $imoveiss['intEstados'] == $intEstados && $imoveiss['intImvlMobilia'] == $intImvlMobilia  && 
                           !empty($imoveiss['default_image'])){
                       
                         $defaultImage = !empty($imoveiss['default_image'])?'<img src="'.base_url().'upload/imoveis/'.$imoveiss['default_image'].'" width= "300" alt="" />':''; ?>
-                        	</thead>          
+                                  
+
+           <tr>
                   <td class="pt-3" width="20%">
                        <?php echo $defaultImage; ?>     
                   </td>
-                  <td class="nav-item p-3" width="80%" style="font-size: 14px; font-family (stack):Roboto">
+
+                 <td class="nav-item p-3" width="80%" style="font-size: 14px; font-family (stack):Roboto">
                       <p style="font-size: 1.5rem" class="link1"><a href="<?php echo base_url('imovel/'.$imoveiss['id']); ?>"><?php echo($imoveiss['nomeImovel']) ?></a></p>
                       <span style="font-weight: bold">Código do Imóvel:&nbsp;<?php echo ($imoveiss['id']) ?>&nbsp;&nbsp;Apelido do imovel&nbsp;<?php echo ($imoveiss['apelidoImovel']) ?>&nbsp;
                       </span><br>
@@ -409,49 +418,27 @@ Tipo de Imóvel:&nbsp;&nbsp;&nbsp;&nbsp;<span class="font-weight-bold"><?php ech
                         <?php echo ($imoveiss['dataIncl']) ?></br></br>
 
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <?php if($statusAssinante == 1) {?>
-                    <a href="<?php echo base_url('imovel/'.$imoveiss['id']); ?>"><button class="btn btn-mdb-color"><i class="far fa-eye"></i>&nbsp;&nbsp;Visualizar imóvel</button></a>
                   
-                  <?php }else{?>
-                    <button class="btn btn-warning" data-toggle="modal" data-target="#btModal"><i class="far fa-eye"></i>&nbsp;&nbsp;Visualizar imóvel</button>
-                  <?php }?>
-          <!-- Modal -->
-          <div class="modal fade" id="btModal" tabindex="-1" role="dialog" aria-labelledby="caixaModal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="caixaModal">Usuário não assinante</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Assina um dos nossos planos e inicia a permuta</p>
-                 
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-mdb-color" data-dismiss="modal">Ok</button>
-                 
-                </div>
-              </div>
-            </div>
-          </div>
-                                    
-                  </td>
-                  <tr>                 
+                    <a href="<?php echo base_url('imovel/'.$imoveiss['id']); ?>"><button class="btn btn-mdb-color"><i class="far fa-eye"></i>&nbsp;&nbsp;Visualizar imóvel</button></a>           
+                          
+                  </td>                               
                  
                  <?php } 
 
                        }
                     
-                    }else{ 
-                  echo "Ainda não encontramos imovel semelhantes1";
-                   }          
+                    }      
 
-                ?>
-              </table>
-            </div>
-            </div>    
+                ?>           
+                
+            </tr>
+           
+
+           </tbody>    
+        </table>
+                
+              </div>
+         </div>    
         </div>
           </div>
         </div>
@@ -526,34 +513,18 @@ Tipo de Imóvel:&nbsp;&nbsp;&nbsp;&nbsp;<span class="font-weight-bold"><?php ech
  });  
  </script>  
 
-    <!-- JavaScript (Opcional) -->
-    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
-<script src="<?php echo base_url() ?>assets/js/jquery-3.5.1.min.js"></script>
-
-<script src="<?php echo base_url() ?>assets/js/scriptCep.js"></script>
-     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="<?php echo base_url() ?>assets/js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="<?php echo base_url() ?>assets/js/mdb.min.js"></script>
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript"></script>
-
   
   </body>
 </html>
 
-
- <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
   <script>

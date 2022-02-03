@@ -27,6 +27,7 @@ class Meu_Perfil extends CI_Controller {
 		$dados['imagem'] = $this->mmeuperfil->get_fotoPerfil()->row();      	
 		$dados["tab_usuario"] = $this->mmeuperfil->getCadastro()->row();
 		$dados["tab_cad_pessoa"] = $this->mmeuperfil->getCadastro()->row();
+		$dados["totalMsg"] = $this->mmeuperfil->totalMsg();
 		$dados['titulo'] = 'Editar Perfil1'; 	
         	
 		$this->load->view('v_meu_perfil', $dados);
